@@ -19,9 +19,9 @@ int main(void)
 		exit(EXIT_FAILURE);
 	}
 	server_address.sin_family = AF_INET;
-	server_address.sin_port = htcons(CONNECTION_PORT);
+	server_address.sin_port = htons(CONNECTION_PORT);
 	server_address.sin_addr.s_addr = INADDR_ANY;
-	server_address.sin_zer[8]='\0';
+	server_address.sin_zero[8]='\0';
 	/* Connect to the server */
 	status = connect(socket_fd, (struct sockaddr*)&server_address,
 			sizeof(server_address));

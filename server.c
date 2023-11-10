@@ -24,7 +24,7 @@ int main(void)
 	status = setsockopt(socket_fd, SOL_SOCKET, SO_REUSEADDR,
 			&option_value, sizeof(option_value));
 	server_address.sin_family = AF_INET;
-	server_address.sin_port = htcons(CONNECTION_PORT);
+	server_address.sin_port = htons(CONNECTION_PORT);
 	server_address.sin_addr.s_addr = INADDR_ANY;
 	server_address.sin_zero[8]='\0';
 	status = bind(socket_fd, (struct sockaddr*)&server_address,
@@ -34,7 +34,7 @@ int main(void)
 	client_socket = (socket_fd, (struct sockaddr*)&connection_address,
 			&address_len);
 	read(client_socket, storage_buffer, 80);
-	storage_buffer[bytes_read] = '\0;
+	storage_buffer[-1] = '\0;
 	printf("Message from client: %s \n", storage_buffer);
 	/* Send data to the client */
 	send(client_socket, message, strlen(message), 0);
