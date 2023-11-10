@@ -31,7 +31,7 @@ int main(void)
 			sizeof(struct sockaddr));
 	status = listen(socket_fd, 4); /* Maximum of 4 requests */
 	address_len = sizeof(connection_address);
-	client_socket = access(socket_fd, (struct sockaddr*)&connection_address,
+	client_socket = accept(socket_fd, (struct sockaddr*)&connection_address,
 			&address_len);
 	read(client_socket, storage_buffer, 80);
 	storage_buffer[-1] = '\0';
