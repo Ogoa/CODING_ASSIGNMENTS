@@ -34,7 +34,7 @@ int main(void)
 	client_socket = (socket_fd, (struct sockaddr*)&connection_address,
 			&address_len);
 	read(client_socket, storage_buffer, 80);
-	storage_buffer[-1] = '\0;
+	storage_buffer[-1] = '\0';
 	printf("Message from client: %s \n", storage_buffer);
 	/* Send data to the client */
 	send(client_socket, message, strlen(message), 0);
