@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <strings.h>
+#include <netdb.h>
 
 #define BUFFER_SIZE 256
 
