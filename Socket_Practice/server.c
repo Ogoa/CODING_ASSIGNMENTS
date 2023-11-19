@@ -7,7 +7,7 @@
  *
  * Return: Always 0 (Successful exit)
  */
-int main(void)
+int main(int argc, char **argv)
 {
 	int socket_fd;
 	int newsock_fd;
