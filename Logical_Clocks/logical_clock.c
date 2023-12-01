@@ -1,8 +1,4 @@
-#include <stdio.h>
-
-typedef struct {
-    int value;
-} LogicalClock;
+#include "clock.h"
 
 void init_logical_clock(LogicalClock* clock) {
     clock->value = 0;

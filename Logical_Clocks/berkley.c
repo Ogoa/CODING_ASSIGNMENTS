@@ -1,14 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <pthread.h>
-#include <unistd.h>
-#include <time.h>
-#include "sockets.c"
-#include "logical_clock.c"
-
-typedef struct {
-    int time_adjustment;
-} BerkleyClock;
+#include "clock.h"
 
 void init_berkley_clock(BerkleyClock* clock) {
     clock->time_adjustment = 0;
@@ -22,4 +12,3 @@ void synchronize_time(LogicalClock* local_clock, BerkleyClock* berkley_clock, in
     local_clock->value += time_adjustment;
     berkley_clock->time_adjustment = time_adjustment;
 }
-

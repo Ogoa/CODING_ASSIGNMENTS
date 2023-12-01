@@ -1,11 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <pthread.h>
-#include <unistd.h>
-#include <time.h>
-#include "sockets.c"
-#include "logical_clock.c"
-#include "berkley.c"
+#include "clock.h"
 
 LogicalClock process_clock;
 BerkleyClock berkley_clock;
@@ -46,13 +39,13 @@ int main() {
         receive_message(client_sock, buffer, sizeof(buffer));
         int received_clock_value = atoi(buffer);
         
-        int time_adjustment = calculate_time_adjustment(&process_clock, &berkley_clock);
+        int time_adjustment = calculate_time_adjustment(&process_clock, &process_clock);
         synchronize_time(&process_clock, &berkley_clock, time_adjustment);
 
         printf("Received: %s | Adjusted Time: %d\n", buffer, get_logical_clock_value(&process_clock));
     }
 
-    close_sockets(server_sock, client_sock);
+    close_socket(server_sock);
+    close_socket(client_sock);
     return 0;
 }
-

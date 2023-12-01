@@ -1,13 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-
-#define SERVER_PORT 5000
-#define CLIENT_PORT 5001
+#include "clock.h"
 
 int create_socket() {
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
